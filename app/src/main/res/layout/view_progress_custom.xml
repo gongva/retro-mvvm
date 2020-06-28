@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:elevation="2dp"
+        android:gravity="center"
+        android:padding="10dp"
+        app:bl_corners_radius="4dp"
+        app:bl_solid_color="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_progress_custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/anim_progress_custom" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_progress_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="4dp"
+        android:gravity="center_horizontal"
+        android:text="正在提交"
+        android:textColor="#fff"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <!-- 写一个空的ImageView为了沉浸式状态栏生效-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 导航区 -->
+        <com.gongva.retromvvm.common.view.navigation.GeneralNavigationBar
+            android:id="@+id/app_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- 内容展示区 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 主内容区 -->
+            <LinearLayout
+                android:id="@+id/app_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" />
+
+            <LinearLayout
+                android:id="@+id/app_loading_panel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="70dp"
+                android:visibility="visible">
+
+                <com.noober.background.view.BLLinearLayout
+                    android:id="@+id/app_loading_panel_bg"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    app:bl_corners_radius="4dp"
+                    app:bl_solid_color="@color/transparent">
+
+                    <ImageView
+                        android:id="@+id/iv_init_loading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/anim_progress_custom" />
+
+                </com.noober.background.view.BLLinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_init_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="正在加载中"
+                    android:textColor="#FF2C2B40"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+            </LinearLayout>
+
+            <com.gongva.retromvvm.common.view.errorpage.GeneralErrorPage
+                android:id="@+id/app_error_page"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

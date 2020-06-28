@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Hik Library</string>
+    <string name="lib_pattern_input_pattern_lock">请绘制您的手势密码</string>
+    <string name="lib_pattern_input_pattern_lock_last_four_point">至少连接4个点 请重新绘制</string>
+    <string name="lib_pattern_input_pattern_lock_sure">请再次确认您的手势密码</string>
+    <string name="lib_pattern_input_pattern_lock_no_same">与上次绘制不一致 请重新绘制</string>
+    <string name="lib_pattern_input_pattern_lock_same">手势密码 确认成功</string>
+    <!--带计数功能输入框的字数提示：0/200-->
+    <string name="count_edit_text_count"><Data><![CDATA[<font color="#ff6386">%1$s</font><font color="#969696">/%2$s</font>]]></Data></string>
+</resources>

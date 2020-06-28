@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply from: 'tinker-support.gradle'
+
+def verCode = 1
+def verName = "1.0"
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.gongva.retromvvm"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode verCode
+        versionName verName
+        multiDexEnabled true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                //For ARouter
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+        ndk {
+            // For Tinker
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a' //, 'x86', 'x86_64'
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            jniDebuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean", "SHOW_LOG", "false")
+            buildConfigField("boolean", "SERVER_SWITCH_ENABLE", "false")
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("boolean", "SHOW_LOG", "true")
+            buildConfigField("boolean", "SERVER_SWITCH_ENABLE", "true")
+        }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+        preDexLibraries = false
+        jumboMode = true
+    }
+
+    applicationVariants.all { variant ->
+        def buildName = variant.buildType.name.equals('debug') ? 'A' : 'R'
+        variant.outputs.all {
+            if (outputFileName.endsWith('.apk')) {
+                // Rename APK
+                def versionName = defaultConfig.versionName
+                def date = new java.text.SimpleDateFormat("MMdd").format(new Date())
+                def newName = "GvDemo_V${versionName}_${buildName}_${date}.apk"
+                outputFileName = newName
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    //library module
+    implementation project(path: ':lib.library')
+    //BackgroundLibrary，解放selector和shape
+    implementation "com.noober.background:core:$rootProject.backgroundLibrary"
+    // ARouter
+    implementation "com.alibaba:arouter-api:$rootProject.aRouterApi",
+            { exclude group: 'com.android.support:appcompat-v7:25.2.0' }
+    annotationProcessor "com.alibaba:arouter-compiler:$rootProject.aRouterCompiler"
+    // SmartRefreshLayout 刷新控件
+    implementation "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.smartRefreshLayout"
+    //bugly tinker相关
+    //implementation "com.android.support:multidex:$rootProject.multidexVersion" //在core组件中已引用
+    implementation "com.tencent.tinker:tinker-android-lib:$rootProject.tinkerVersion"
+    implementation "com.tencent.bugly:crashreport_upgrade:$rootProject.bugly_crashreport"
+    implementation "com.tencent.bugly:nativecrashreport:$rootProject.bugly_native_crashreport"
+    //walle
+    implementation "com.meituan.android.walle:library:$rootProject.meituanWalle"
+}

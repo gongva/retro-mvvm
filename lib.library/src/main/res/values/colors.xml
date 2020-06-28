@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="col_PatternLockNormalDotStateColor">#D0D3DB</color>
+    <color name="col_PatternLockNormalWrongStateColor">#E95E52</color>
+    <color name="col_PatternLockNormalWrongStrokeStateColor">#22E95E52</color>
+    <color name="col_PatternLockNormalCorrectLineStateColor">#4E91F9</color>
+    <color name="col_PatternLockNormalCorrectStrokeStateColor">#224E91F9</color>
+    <color name="col_PatternLock_Sure_Error">#E95E52</color>
+    <color name="col_PatternLock_Sure_Success">#4D4D4D</color>
+    <!--默认分割线-->
+    <color name="line">#E5E5E5</color>
+    <!-- 白色按钮按下 -->
+    <color name="btn_white_press">#FFE5E5E5</color>
+    <!--常用颜色清单-->
+    <color name="white">#FFFFFF</color>
+</resources>

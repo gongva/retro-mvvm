@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/actionBar_nav"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/navigation_height"
+    android:background="@color/white"
+    android:minHeight="@dimen/navigation_height">
+
+    <LinearLayout
+        android:id="@+id/llt_nav_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_nav_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxWidth="230dp"
+            android:singleLine="true"
+            android:textColor="#FF2C2B40"
+            android:textSize="18sp"
+            tools:text="标题标题标题标题标题标题标题标题标题标题标题标题" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_nav_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left"
+        android:background="@drawable/selector_transparent_click"
+        android:drawableLeft="@drawable/ic_back_black"
+        android:drawablePadding="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:minWidth="48dp"
+        android:paddingLeft="13dp"
+        android:paddingRight="10dp"
+        android:singleLine="true"
+        android:text="返回"
+        android:textColor="#FF2C2B40"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:id="@+id/llt_nav_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="right"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_nav_custom_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:drawablePadding="6dp"
+            android:gravity="center"
+            android:minWidth="40dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#4D4D4D"
+            android:textSize="16sp"
+            android:visibility="visible"
+            tools:text="菜单" />
+
+        <ImageView
+            android:id="@+id/iv_nav_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

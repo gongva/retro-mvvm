@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RetroMvvm</string>
+    <!--For App Link-->
+    <string name="link_scheme1">gongva</string>
+    <string name="link_scheme2">gv</string>
+    <string name="link_scheme_host1">route</string>
+    <string name="link_scheme_host2">jump.gongva.com</string>
+</resources>

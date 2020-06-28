@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:minHeight="260dp"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <ImageView
+        android:id="@+id/iv_error_page_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tv_error_page_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="没有相关内容"
+        android:textColor="#FFB6B6B6"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_error_page_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="#4E91F9"
+        android:paddingLeft="39dp"
+        android:paddingTop="9dp"
+        android:paddingRight="39dp"
+        android:paddingBottom="9dp"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:visibility="visible"
+        tools:text="重试" />
+</LinearLayout>
