@@ -30,13 +30,13 @@ import com.gongva.library.R;
 public class NavigationBar extends FrameLayout {
 
     Context mContext;
-    RelativeLayout actionBar;
-    LinearLayout titleLayout;
-    TextView titleView;
-    TextView back;
-    LinearLayout menuLayout;
-    TextView mCustomMenu;
-    ImageView mCustomMenuIcon;
+    RelativeLayout rltRoot;
+    LinearLayout lltTitle;
+    TextView tvTitle;
+    TextView tvBack;
+    LinearLayout lltMenu;
+    TextView tvCustomMenu;
+    ImageView ivCustomMenuIcon;
     OnDoubleClickListener doubleClickListener;
     OnClickListener doubleClick, singleTapListener;
 
@@ -63,14 +63,14 @@ public class NavigationBar extends FrameLayout {
             }
         };
         View.inflate(context, getContentLayout(), this);
-        actionBar = findViewById(R.id.actionBar_nav);
-        titleLayout = findViewById(R.id.llt_nav_title);
-        titleView = findViewById(R.id.tv_nav_title);
-        back = findViewById(R.id.tv_nav_back);
-        menuLayout = findViewById(R.id.llt_nav_menu);
-        mCustomMenu = findViewById(R.id.tv_nav_custom_menu);
-        mCustomMenuIcon = findViewById(R.id.iv_nav_menu);
-        back.setOnClickListener(new OnClickListener() {
+        rltRoot = findViewById(R.id.actionBar_nav);
+        lltTitle = findViewById(R.id.llt_nav_title);
+        tvTitle = findViewById(R.id.tv_nav_title);
+        tvBack = findViewById(R.id.tv_nav_back);
+        lltMenu = findViewById(R.id.llt_nav_menu);
+        tvCustomMenu = findViewById(R.id.tv_nav_custom_menu);
+        ivCustomMenuIcon = findViewById(R.id.iv_nav_menu);
+        tvBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mContext instanceof Activity) {
@@ -86,12 +86,12 @@ public class NavigationBar extends FrameLayout {
         return R.layout.view_navigation_bar;
     }
 
-    public TextView getBack() {
-        return back;
+    public TextView getTvBack() {
+        return tvBack;
     }
 
-    public void setBack(TextView back) {
-        this.back = back;
+    public void setTvBack(TextView tvBack) {
+        this.tvBack = tvBack;
     }
 
     /**
@@ -164,19 +164,19 @@ public class NavigationBar extends FrameLayout {
     }
 
     public void setBackgroundColor(int color) {
-        actionBar.setBackgroundColor(color);
+        rltRoot.setBackgroundColor(color);
     }
 
     public void setTitleTextColor(int color) {
-        titleView.setTextColor(color);
+        tvTitle.setTextColor(color);
     }
 
     public void setText(CharSequence title) {
-        titleView.setText(title);
+        tvTitle.setText(title);
     }
 
-    public View getTitleView() {
-        return titleView;
+    public View getTvTitle() {
+        return tvTitle;
     }
 
     /**
@@ -185,22 +185,22 @@ public class NavigationBar extends FrameLayout {
      * @param enabled
      */
     public void setLeftEnabled(boolean enabled) {
-        back.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        tvBack.setVisibility(enabled ? View.VISIBLE : View.GONE);
     }
 
     public void disableButtonClick() {
-        back.setClickable(false);
-        menuLayout.setClickable(false);
+        tvBack.setClickable(false);
+        lltMenu.setClickable(false);
     }
 
     public void enableButtonClick() {
-        back.setClickable(true);
-        menuLayout.setClickable(true);
+        tvBack.setClickable(true);
+        lltMenu.setClickable(true);
     }
 
     public void setLeftIcon(int iconResId) {
         setEnabled(true);
-        back.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
+        tvBack.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
     }
 
     public void setLeftOnClickListener(OnClickListener listener) {
@@ -213,16 +213,23 @@ public class NavigationBar extends FrameLayout {
 
     public void setLeftTitle(String title, int iconResId, OnClickListener listener) {
         setEnabled(true);
-        back.setText(title == null ? "" : title);
-        back.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
-        back.setOnClickListener(listener);
+        tvBack.setText(title == null ? "" : title);
+        tvBack.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
+        tvBack.setOnClickListener(listener);
+    }
+
+    /**
+     * 隐藏返回不显示
+     */
+    public void hideBack() {
+        tvBack.setVisibility(GONE);
     }
 
     /**
      * 隐藏菜单不显示
      */
     public void hideMenu() {
-        menuLayout.setVisibility(GONE);
+        lltMenu.setVisibility(GONE);
     }
 
     /**
@@ -235,10 +242,10 @@ public class NavigationBar extends FrameLayout {
     public View setMenu(View contentView, OnClickListener listener) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         params.rightMargin = ViewUtil.dip2px(mContext, 15);
-        menuLayout.addView(contentView, params);
+        lltMenu.addView(contentView, params);
         contentView.setOnClickListener(listener);
-        menuLayout.setVisibility(VISIBLE);
-        return menuLayout;
+        lltMenu.setVisibility(VISIBLE);
+        return lltMenu;
     }
 
     /**
@@ -250,17 +257,17 @@ public class NavigationBar extends FrameLayout {
      * @return
      */
     public View setMenu(int iconResID, String text, OnClickListener listener) {
-        menuLayout.setVisibility(VISIBLE);
-        mCustomMenuIcon.setVisibility(GONE);
+        lltMenu.setVisibility(VISIBLE);
+        ivCustomMenuIcon.setVisibility(GONE);
         if (iconResID == 0 && TextUtils.isEmpty(text)) {
-            mCustomMenu.setVisibility(View.GONE);
+            tvCustomMenu.setVisibility(View.GONE);
         } else {
-            mCustomMenu.setVisibility(View.VISIBLE);
-            mCustomMenu.setText(text);
-            mCustomMenu.setCompoundDrawablesWithIntrinsicBounds(iconResID, 0, 0, 0);
-            mCustomMenu.setOnClickListener(listener);
+            tvCustomMenu.setVisibility(View.VISIBLE);
+            tvCustomMenu.setText(text);
+            tvCustomMenu.setCompoundDrawablesWithIntrinsicBounds(iconResID, 0, 0, 0);
+            tvCustomMenu.setOnClickListener(listener);
         }
-        return mCustomMenu;
+        return tvCustomMenu;
     }
 
     /**
@@ -273,18 +280,18 @@ public class NavigationBar extends FrameLayout {
      * @return
      */
     public View setMenu(int iconResID, String text, int textColor, OnClickListener listener) {
-        menuLayout.setVisibility(VISIBLE);
-        mCustomMenuIcon.setVisibility(GONE);
+        lltMenu.setVisibility(VISIBLE);
+        ivCustomMenuIcon.setVisibility(GONE);
         if (iconResID == 0 && TextUtils.isEmpty(text)) {
-            mCustomMenu.setVisibility(View.GONE);
+            tvCustomMenu.setVisibility(View.GONE);
         } else {
-            mCustomMenu.setVisibility(View.VISIBLE);
-            mCustomMenu.setText(text);
-            mCustomMenu.setTextColor(textColor);
-            mCustomMenu.setCompoundDrawablesWithIntrinsicBounds(iconResID, 0, 0, 0);
-            mCustomMenu.setOnClickListener(listener);
+            tvCustomMenu.setVisibility(View.VISIBLE);
+            tvCustomMenu.setText(text);
+            tvCustomMenu.setTextColor(textColor);
+            tvCustomMenu.setCompoundDrawablesWithIntrinsicBounds(iconResID, 0, 0, 0);
+            tvCustomMenu.setOnClickListener(listener);
         }
-        return mCustomMenu;
+        return tvCustomMenu;
     }
 
     /**
@@ -295,16 +302,16 @@ public class NavigationBar extends FrameLayout {
      * @return
      */
     public TextView setMenu(String text, OnClickListener listener) {
-        menuLayout.setVisibility(VISIBLE);
-        mCustomMenuIcon.setVisibility(GONE);
+        lltMenu.setVisibility(VISIBLE);
+        ivCustomMenuIcon.setVisibility(GONE);
         if (TextUtils.isEmpty(text)) {
-            mCustomMenu.setVisibility(View.GONE);
+            tvCustomMenu.setVisibility(View.GONE);
         } else {
-            mCustomMenu.setVisibility(View.VISIBLE);
-            mCustomMenu.setText(text);
-            mCustomMenu.setOnClickListener(listener);
+            tvCustomMenu.setVisibility(View.VISIBLE);
+            tvCustomMenu.setText(text);
+            tvCustomMenu.setOnClickListener(listener);
         }
-        return mCustomMenu;
+        return tvCustomMenu;
     }
 
     /**
@@ -314,14 +321,14 @@ public class NavigationBar extends FrameLayout {
      * @param listener
      */
     public void setMenu(int iconResID, OnClickListener listener) {
-        menuLayout.setVisibility(VISIBLE);
-        mCustomMenu.setVisibility(GONE);
-        mCustomMenuIcon.setVisibility(VISIBLE);
-        mCustomMenuIcon.setImageResource(iconResID);
-        mCustomMenuIcon.setOnClickListener(listener);
+        lltMenu.setVisibility(VISIBLE);
+        tvCustomMenu.setVisibility(GONE);
+        ivCustomMenuIcon.setVisibility(VISIBLE);
+        ivCustomMenuIcon.setImageResource(iconResID);
+        ivCustomMenuIcon.setOnClickListener(listener);
     }
 
     public TextView getCustomMenu() {
-        return mCustomMenu;
+        return tvCustomMenu;
     }
 }

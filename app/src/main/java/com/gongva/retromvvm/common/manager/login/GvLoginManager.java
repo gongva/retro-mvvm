@@ -16,6 +16,7 @@ import com.gongva.retromvvm.repository.Injection;
 import com.gongva.retromvvm.repository.common.remote.HeaderUtils;
 import com.gongva.retromvvm.ui.login.LoginActivity;
 import com.hik.core.android.api.GsonUtil;
+import com.hik.core.android.api.LogCat;
 import com.hik.core.android.api.io.SharePreferencesUtil;
 import com.hik.core.java.security.AESUtil;
 import com.hik.core.java.security.DESUtil;

@@ -30,6 +30,8 @@ import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.gongva.library.app.ui.web.protocol.JsBridgeParam;
+import com.gongva.library.app.ui.web.protocol.JsBridgeProtocolHandler;
 import com.hik.core.android.api.GsonUtil;
 import com.hik.core.android.api.LogCat;
 import com.hik.core.android.api.io.FileProvider7;
@@ -51,11 +53,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 公共组件H5 WebView
+ * webkit内核WebView
  *
  * @author gongwei 2019.1.2
  */
-
+@Deprecated //尽量使用X5WebView，某个版本以后webkit内核的WebView将不再维护
 public abstract class H5WebView extends WebView {
 
     protected static final int PERMISSIONS_REQUEST_PHONE = 209;
@@ -65,6 +67,7 @@ public abstract class H5WebView extends WebView {
 
     protected boolean scroll = true; //页面是否滚动,，内嵌到ScrollView中时考虑设置
     protected boolean wideViewPort = true; //是否完整适配屏幕，会导致字体变小，内嵌到ScrollView中时考虑设置
+    protected int cacheMode = WebSettings.LOAD_NO_CACHE; //缓存策略：默认关闭缓存，否则可能会存在一些不刷新的问题
     protected boolean initSettingCompleted = false;//WebSetting设置是否完成
     protected H5WebChromeClient _h5WebChromeClient;
     private H5WebViewClientCallBack _clientCallBack;
@@ -139,24 +142,23 @@ public abstract class H5WebView extends WebView {
     }
 
     /**
-     * 设置WebViewClientCallBack For WebView's LifeCycle
-     * Deprecated by Gv. 2019.11.26 过气的方法，已使用继承的子类中实现抽象方法getH5WebViewClientCallBack()作为替换
-     *
-     * @param callBack
-     */
-    @Deprecated
-    public void setCallBack(H5WebViewClientCallBack callBack) {
-        this._clientCallBack = callBack;
-    }
-
-    /**
      * 是否完整适配屏幕，会导致字体变小，内嵌到ScrollView中时考虑设置
      *
      * @param wideViewPort
      */
     public void setWideViewPort(boolean wideViewPort) {
         this.wideViewPort = wideViewPort;
-        getSettings().setUseWideViewPort(this.wideViewPort);
+        getSettings().setUseWideViewPort(wideViewPort);
+    }
+
+    /**
+     * 设置缓存策略
+     *
+     * @param cacheMode
+     */
+    public void setCacheMode(int cacheMode) {
+        this.cacheMode = cacheMode;
+        getSettings().setCacheMode(cacheMode);
     }
 
     public void initWebSetting() {
@@ -178,7 +180,7 @@ public abstract class H5WebView extends WebView {
             webSettings.setDefaultTextEncodingName("utf-8");
             webSettings.setDomStorageEnabled(true);
             webSettings.setAllowFileAccess(true);//设置可以访问文件
-            webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//关闭缓存，否则可能会存在一些不刷新的问题
+            webSettings.setCacheMode(cacheMode);
             webSettings.setUserAgentString(String.format("%s%s", webSettings.getUserAgentString(), AppConfig.WEB_USER_AGENT_MARK));//在UserAgent增加标识，用以web页面判断是否在我们的App中打开
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -196,7 +198,7 @@ public abstract class H5WebView extends WebView {
         mJSBridgeManager.registerHandler(JsBridgeProtocolHandler.HN_JS_2_NATIVE_DATA, (data, function) -> {
             LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_JS_2_NATIVE_DATA + "' 入参：" + data);
             if (TextUtils.isEmpty(data)) return;
-            H5JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, H5JsBridgeParam.class);
+            JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, JsBridgeParam.class);
             Activity activityHost = ViewUtil.getActivityFromView(H5WebView.this);
             if (h5Param != null && activityHost != null) {
                 JsBridgeProtocolHandler.getInstance().handleActionProtocol(activityHost, h5Param, (String result) -> {
@@ -209,7 +211,7 @@ public abstract class H5WebView extends WebView {
         mJSBridgeManager.registerHandler(JsBridgeProtocolHandler.HN_JS_2_NATIVE_ACTION, (data, function) -> {
             LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_JS_2_NATIVE_ACTION + "' 入参：" + data);
             if (TextUtils.isEmpty(data)) return;
-            H5JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, H5JsBridgeParam.class);
+            JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, JsBridgeParam.class);
             Activity activityHost = ViewUtil.getActivityFromView(H5WebView.this);
             if (h5Param != null && activityHost != null) {
                 JsBridgeProtocolHandler.getInstance().handleActionProtocol(activityHost, h5Param, (String result) -> {
@@ -225,7 +227,7 @@ public abstract class H5WebView extends WebView {
      *
      * @param dataToJs
      */
-    public void sendDataToJs(H5JsBridgeParam dataToJs) {
+    public void sendDataToJs(JsBridgeParam dataToJs) {
         String dataString = GsonUtil.jsonSerializer(dataToJs);
         mJSBridgeManager.callHandler(JsBridgeProtocolHandler.HN_NATIVE_2_JS_DATA, dataString, null);
         LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_NATIVE_2_JS_DATA + "' ：" + dataString);
@@ -236,7 +238,7 @@ public abstract class H5WebView extends WebView {
      *
      * @param dataToJs
      */
-    public void sendActionToJs(H5JsBridgeParam dataToJs) {
+    public void sendActionToJs(JsBridgeParam dataToJs) {
         String dataString = GsonUtil.jsonSerializer(dataToJs);
         mJSBridgeManager.callHandler(JsBridgeProtocolHandler.HN_NATIVE_2_JS_ACTION, dataString, null);
         LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_NATIVE_2_JS_ACTION + "' ：" + dataString);
@@ -348,7 +350,8 @@ public abstract class H5WebView extends WebView {
             if (isCapture) {
                 activityHost.startActivityForResult(captureIntent, AppContext.REQUEST_CODE_WEB_SELECT_FILE);
             } else {
-                Intent photo = new Intent(Intent.ACTION_PICK);
+                Intent photo = new Intent(Intent.ACTION_PICK);//采用相册和文件的选择方式，切近用户习惯
+                //Intent photo = new Intent(Intent.ACTION_GET_CONTENT);//采用内容选择器的方式，选择方式更多，功能更强大
                 photo.setType("image/*");
 
                 Intent chooserIntent = Intent.createChooser(photo, "选择方式");

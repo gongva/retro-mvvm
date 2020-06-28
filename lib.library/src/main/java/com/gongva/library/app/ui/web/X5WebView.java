@@ -1,4 +1,4 @@
-package com.gongva.library.app.ui.web.x5;
+package com.gongva.library.app.ui.web;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -23,6 +23,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.gongva.library.app.ui.web.protocol.JsBridgeParam;
+import com.gongva.library.app.ui.web.protocol.JsBridgeProtocolHandler;
 import com.hik.core.android.api.GsonUtil;
 import com.hik.core.android.api.LogCat;
 import com.hik.core.android.api.io.FileProvider7;
@@ -34,8 +36,6 @@ import com.gongva.library.app.base.PermissionRequestListenerImpl;
 import com.gongva.library.app.config.AppConfig;
 import com.gongva.library.app.config.AppContext;
 import com.gongva.library.app.ui.UI;
-import com.gongva.library.app.ui.web.H5JsBridgeParam;
-import com.gongva.library.app.ui.web.JsBridgeProtocolHandler;
 import com.gongva.library.app.ui.web.jsbridge.IJSBridgeManager;
 import com.gongva.library.app.ui.web.jsbridge.JSBridgeManager;
 import com.gongva.library.app.ui.web.jsbridge.X5BridgeWebViewClient;
@@ -68,6 +68,7 @@ public abstract class X5WebView extends WebView {
     protected X5WebChromeClient _h5WebChromeClient;
     protected boolean scroll = true; //页面是否滚动,，内嵌到ScrollView中时考虑设置
     protected boolean wideViewPort = true; //是否完整适配屏幕，会导致字体变小，内嵌到ScrollView中时考虑设置
+    protected int cacheMode = android.webkit.WebSettings.LOAD_DEFAULT; //缓存策略
 
     public X5WebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -147,7 +148,17 @@ public abstract class X5WebView extends WebView {
      */
     public void setWideViewPort(boolean wideViewPort) {
         this.wideViewPort = wideViewPort;
-        getSettings().setUseWideViewPort(this.wideViewPort);
+        getSettings().setUseWideViewPort(wideViewPort);
+    }
+
+    /**
+     * 设置缓存策略
+     *
+     * @param cacheMode
+     */
+    public void setCacheMode(int cacheMode) {
+        this.cacheMode = cacheMode;
+        getSettings().setCacheMode(cacheMode);
     }
 
     public void initWebSetting() {
@@ -171,7 +182,7 @@ public abstract class X5WebView extends WebView {
             webSettings.setDefaultTextEncodingName("utf-8");
             webSettings.setDomStorageEnabled(true);
             webSettings.setAllowFileAccess(true);//设置可以访问文件
-            webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);//关闭缓存，否则可能会存在一些不刷新的问题
+            webSettings.setCacheMode(cacheMode);
             webSettings.setUserAgentString(String.format("%s%s", webSettings.getUserAgentString(), AppConfig.WEB_USER_AGENT_MARK));//在UserAgent增加标识，用以web页面判断是否在我们的App中打开
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 webSettings.setMixedContentMode(0);//android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -197,7 +208,7 @@ public abstract class X5WebView extends WebView {
         mJSBridgeManager.registerHandler(JsBridgeProtocolHandler.HN_JS_2_NATIVE_DATA, (data, function) -> {
             LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_JS_2_NATIVE_DATA + "' 入参：" + data);
             if (TextUtils.isEmpty(data)) return;
-            H5JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, H5JsBridgeParam.class);
+            JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, JsBridgeParam.class);
             Activity activityHost = ViewUtil.getActivityFromView(X5WebView.this);
             if (h5Param != null && activityHost != null) {
                 JsBridgeProtocolHandler.getInstance().handleActionProtocol(activityHost, h5Param, (String result) -> {
@@ -210,7 +221,7 @@ public abstract class X5WebView extends WebView {
         mJSBridgeManager.registerHandler(JsBridgeProtocolHandler.HN_JS_2_NATIVE_ACTION, (data, function) -> {
             LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_JS_2_NATIVE_ACTION + "' 入参：" + data);
             if (TextUtils.isEmpty(data)) return;
-            H5JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, H5JsBridgeParam.class);
+            JsBridgeParam h5Param = GsonUtil.jsonDeserializer(data, JsBridgeParam.class);
             Activity activityHost = ViewUtil.getActivityFromView(X5WebView.this);
             if (h5Param != null && activityHost != null) {
                 JsBridgeProtocolHandler.getInstance().handleActionProtocol(activityHost, h5Param, (String result) -> {
@@ -226,7 +237,7 @@ public abstract class X5WebView extends WebView {
      *
      * @param dataToJs
      */
-    public void sendDataToJs(H5JsBridgeParam dataToJs) {
+    public void sendDataToJs(JsBridgeParam dataToJs) {
         String dataString = GsonUtil.jsonSerializer(dataToJs);
         mJSBridgeManager.callHandler(JsBridgeProtocolHandler.HN_NATIVE_2_JS_DATA, dataString, null);
         LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_NATIVE_2_JS_DATA + "' ：" + dataString);
@@ -237,7 +248,7 @@ public abstract class X5WebView extends WebView {
      *
      * @param dataToJs
      */
-    public void sendActionToJs(H5JsBridgeParam dataToJs) {
+    public void sendActionToJs(JsBridgeParam dataToJs) {
         String dataString = GsonUtil.jsonSerializer(dataToJs);
         mJSBridgeManager.callHandler(JsBridgeProtocolHandler.HN_NATIVE_2_JS_ACTION, dataString, null);
         LogCat.i("Js Bridge '" + JsBridgeProtocolHandler.HN_NATIVE_2_JS_ACTION + "' ：" + dataString);
@@ -352,7 +363,8 @@ public abstract class X5WebView extends WebView {
             if (isCapture) {
                 activityHost.startActivityForResult(captureIntent, AppContext.REQUEST_CODE_WEB_SELECT_FILE);
             } else {
-                Intent photo = new Intent(Intent.ACTION_PICK);
+                Intent photo = new Intent(Intent.ACTION_PICK);//采用相册和文件的选择方式，切近用户习惯
+                //Intent photo = new Intent(Intent.ACTION_GET_CONTENT);//采用内容选择器的方式，选择方式更多，功能更强大
                 photo.setType("image/*");
 
                 Intent chooserIntent = Intent.createChooser(photo, "选择方式");
@@ -621,29 +633,6 @@ public abstract class X5WebView extends WebView {
             } else {
                 activityHost.startActivity(intentCall);
             }
-        }
-    }
-
-    /**
-     * WebView Client CallBack
-     * 提供：
-     * 1.将WebView加载生命周期方法和加载进度控制，暴露给需要的Activity
-     */
-    public static abstract class X5WebViewClientCallBack {
-
-        public abstract void onReceivedError(WebView view, int errorCode, String description, String failingUrl);
-
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-        }
-
-        public void onPageFinished(WebView view, String url) {
-        }
-
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            return false;
-        }
-
-        public void updateProgress(int progress) {
         }
     }
 }

@@ -16,7 +16,7 @@ import java.security.MessageDigest;
  * @date 2019/7/16
  */
 public class MixedTransform extends BitmapTransformation {
-    private static final String ID = "com.hikcreate.library.plugin.glide.MixedTransform";
+    private static final String ID = "library.plugin.glide.MixedTransform";
     private static final byte[] ID_BYTES = ID.getBytes(Charset.forName("UTF-8"));
     private int maxWidth, maxHeight;
 

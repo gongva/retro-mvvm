@@ -15,10 +15,10 @@ public class ARouterPath {
     /*ARouter extra*/
     public static final int PERMIT_TYPE_LOGIN = 1;//访问权限：登录才可以访问
 
-    public static final String ROUTE_SCHEME = "com.gongva.banmacredit";//todo company's scheme
+    public static final String ROUTE_SCHEME = "com.gongva.demo";//todo company's scheme
     public static final String ROUTE_HOST = "nativePage";
     public static final String ROUTE_SCHEME_HOST = String.format("%s://%s", ROUTE_SCHEME, ROUTE_HOST);
-    public static final String ROUTE_SCHEME_BACKUP = "https://bmcjump.hikcreate.com"; //iOS UL的二级域名，Android也需要支持 //todo company's UL url
+    public static final String ROUTE_SCHEME_BACKUP = "https://bmcjump.gongva.com"; //iOS UL的二级域名，Android也需要支持 //todo company's UL url
     public static final String ROUTE_PERMIT_TYPE = "permitType";//todo company's permit type key
 
     /*-------------Paths-------------*/

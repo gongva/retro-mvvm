@@ -1,4 +1,4 @@
-package com.gongva.library.app.ui.web;
+package com.gongva.library.app.ui.web.protocol;
 
 /**
  * Js Bridge 的Handler入参
@@ -6,7 +6,7 @@ package com.gongva.library.app.ui.web;
  * @author gongwei
  * @date 2019/3/6
  */
-public class H5JsBridgeParam {
+public class JsBridgeParam {
     /**
      * 请求类型 @see JsBridgeProtocolHandler.static
      */

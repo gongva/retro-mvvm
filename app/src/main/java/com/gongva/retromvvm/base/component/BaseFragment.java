@@ -24,6 +24,7 @@ import com.gongva.library.app.base.ILoadingErrorController;
 import com.gongva.retromvvm.R;
 import com.gongva.retromvvm.common.view.errorpage.GeneralErrorPage;
 import com.gongva.retromvvm.common.view.navigation.GeneralNavigationBar;
+import com.hik.core.android.api.KeyboardUtil;
 
 /**
  * Fragment基类
@@ -117,16 +118,16 @@ public abstract class BaseFragment<B extends ViewDataBinding> extends Fragment i
      *
      * @param enabled
      */
-    public void setActionBarEnabled(boolean enabled) {
-        mNavigationBar.setVisibility(enabled ? View.VISIBLE : View.GONE);
+    public void setNavigationBarEnabled(boolean enabled) {
+        mNavigationBar.setEnabled(enabled);
     }
 
-    public void hideActionBar() {
-        setActionBarEnabled(false);
+    public void hideNavigationBar() {
+        setNavigationBarEnabled(false);
     }
 
-    public void showActionBar() {
-        setActionBarEnabled(true);
+    public void showNavigationBar() {
+        setNavigationBarEnabled(true);
     }
 
     public void setTitle(CharSequence title) {
@@ -134,13 +135,29 @@ public abstract class BaseFragment<B extends ViewDataBinding> extends Fragment i
     }
 
     //-------------------Back-------------------
-
-    public void setHomeAsUpTitle(View.OnClickListener listener) {
-        setHomeAsUpTitle(BaseActivity.DEFAULT_BACK_TEXT, listener);
+    public void setBack(View.OnClickListener listener) {
+        KeyboardUtil.hideSoftKeyboard(getActivity());
+        setBack(getResources().getString(R.string.back_text_default), listener);
     }
 
-    public void setHomeAsUpTitle(String title, final View.OnClickListener listener) {
+    public void setBack(String title, final View.OnClickListener listener) {
         mNavigationBar.setLeftTitle(title, R.drawable.ic_back_black, listener);
+    }
+
+    public void setBack(int iconId) {
+        mNavigationBar.setLeftIcon(iconId);
+    }
+
+    public void setBack(int iconId, View.OnClickListener listener) {
+        mNavigationBar.setLeftIcon(iconId, listener);
+    }
+
+    public void setBack(String title, int iconId, View.OnClickListener listener) {
+        mNavigationBar.setLeftTitle(title, iconId, listener);
+    }
+
+    public void hideBack() {
+        mNavigationBar.hideBack();
     }
 
     //-------------------Menu-------------------

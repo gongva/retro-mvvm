@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:orientation="vertical"
                 android:paddingBottom="70dp"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <com.noober.background.view.BLLinearLayout
                     android:id="@+id/app_loading_panel_bg"

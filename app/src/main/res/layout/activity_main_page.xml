@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/edt_web_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://youzan.github.io/vant/mobile.html#/zh-CN/uploader" />
+
+            <Button
+                android:id="@+id/btn_h5_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{clickListener}"
+                android:text="H5测试"
+                android:textAllCaps="false" />
+
+            <EditText
+                android:id="@+id/edt_x5_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://youzan.github.io/vant/mobile.html#/zh-CN/uploader" />
+
+            <Button
+                android:id="@+id/btn_x5_test"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{clickListener}"
+                android:text="X5测试"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>

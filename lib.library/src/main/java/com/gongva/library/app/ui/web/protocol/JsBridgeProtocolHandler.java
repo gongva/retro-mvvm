@@ -1,4 +1,4 @@
-package com.gongva.library.app.ui.web;
+package com.gongva.library.app.ui.web.protocol;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -108,7 +108,7 @@ public abstract class JsBridgeProtocolHandler {
      * @param param
      * @return
      */
-    public void handleActionProtocol(Activity activity, H5JsBridgeParam param, JsBridgeProtocolCallBack callBack) {
+    public void handleActionProtocol(Activity activity, JsBridgeParam param, JsBridgeProtocolCallBack callBack) {
         if (INSTANCE == null || param == null || TextUtils.isEmpty(param.getType())) {
             return;
         }
@@ -198,8 +198,8 @@ public abstract class JsBridgeProtocolHandler {
      *
      * @return
      */
-    public H5JsBridgeParam getNativeBackClickParam() {
-        H5JsBridgeParam param = new H5JsBridgeParam();
+    public JsBridgeParam getNativeBackClickParam() {
+        JsBridgeParam param = new JsBridgeParam();
         param.setType(ACTION_NATIVE_BACK_CLICK);
         return param;
     }

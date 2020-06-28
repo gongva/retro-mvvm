@@ -6,7 +6,7 @@ package com.gongva.library.app.ui.web.entity;
  * @author gongwei
  * @date 2019/2/22
  */
-public class H5CallBackUserInfo {
+public class JsCallBackUserInfo {
     private String token;//公网token
 
     public String getToken() {

@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.Locale;
 
 public class LogCat {
-    public static String TAG = "hik_create";
+    public static String TAG = "Gv:";
     public static boolean debug = true;
 
     public LogCat() {

@@ -1,11 +1,18 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item><!--默认标题栏-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item><!--默认状态栏-->
+        <item name="colorAccent">@color/colorAccent</item><!--默认的光标、选中的RadioButton颜色-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="colorControlHighlight">@color/colorControlHighlight</item>
     </style>
 
+    <!--   启动页主题  -->
+    <style name="WelcomePageTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/transparent_pressed</item><!-- 这里建议用启动页9.png -->
+    </style>
 </resources>

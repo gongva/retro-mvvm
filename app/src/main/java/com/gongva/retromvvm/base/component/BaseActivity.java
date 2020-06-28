@@ -32,8 +32,6 @@ import com.noober.background.drawable.DrawableCreator;
  */
 public abstract class BaseActivity<B extends ViewDataBinding> extends ActivitySupportWrapper implements IInitLoadingController, ILoadingErrorController {
 
-    public static final String DEFAULT_BACK_TEXT = "返回";
-
     public B mBinding;
 
     protected ViewGroup mRootView;
@@ -99,7 +97,7 @@ public abstract class BaseActivity<B extends ViewDataBinding> extends ActivitySu
      * @param enabled
      */
     public void setNavigationBarEnabled(boolean enabled) {
-        mNavigationBar.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        mNavigationBar.setEnabled(enabled);
     }
 
     public void hideNavigationBar() {
@@ -117,7 +115,7 @@ public abstract class BaseActivity<B extends ViewDataBinding> extends ActivitySu
     //-------------------Back-------------------
     public void setBack(View.OnClickListener listener) {
         KeyboardUtil.hideSoftKeyboard(this);
-        setBack(DEFAULT_BACK_TEXT, listener);
+        setBack(getResources().getString(R.string.back_text_default), listener);
     }
 
     public void setBack(String title, final View.OnClickListener listener) {
@@ -134,6 +132,10 @@ public abstract class BaseActivity<B extends ViewDataBinding> extends ActivitySu
 
     public void setBack(String title, int iconId, View.OnClickListener listener) {
         mNavigationBar.setLeftTitle(title, iconId, listener);
+    }
+
+    public void hideBack() {
+        mNavigationBar.hideBack();
     }
 
     //-------------------Menu-------------------

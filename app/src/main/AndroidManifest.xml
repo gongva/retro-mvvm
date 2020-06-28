@@ -49,6 +49,12 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.web.AppH5WebActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.common.web.AppX5WebActivity"
+            android:screenOrientation="portrait" />
 
         <!-- For FileProvider -->
         <provider

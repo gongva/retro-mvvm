@@ -12,7 +12,7 @@ import com.gongva.library.app.TinkerApplicationCreate;
 public class AppConfig {
 
     //webview需要在userAgent的末尾增加标识，给WebJs判断用
-    public static final String WEB_USER_AGENT_MARK = ",com.hikcreate:android";//todo mark: company's user agent
+    public static final String WEB_USER_AGENT_MARK = ",com.gongva:android";//todo mark: company's user agent
 
     /**
      * 获取版本号Name

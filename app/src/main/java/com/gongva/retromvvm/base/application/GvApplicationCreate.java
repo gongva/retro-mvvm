@@ -7,7 +7,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
 import com.gongva.library.app.TinkerApplicationCreate;
 import com.gongva.library.app.ui.UI;
 import com.gongva.library.app.ui.login.LoginManager;
-import com.gongva.library.app.ui.web.JsBridgeProtocolHandler;
+import com.gongva.library.app.ui.web.protocol.JsBridgeProtocolHandler;
 import com.gongva.library.plugin.netbase.RetrofitManager;
 import com.gongva.library.plugin.netbase.SslUtils;
 import com.gongva.retromvvm.BuildConfig;

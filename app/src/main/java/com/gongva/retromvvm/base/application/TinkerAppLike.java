@@ -26,13 +26,6 @@ public class TinkerAppLike extends DefaultApplicationLike {
     }
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        BuglyInit.initBugly(getApplication());
-        GvApplicationCreate.getInstance().initInAppCreate();
-    }
-
-    @Override
     public void onBaseContextAttached(Context base) {
         super.onBaseContextAttached(base);
         MultiDex.install(base);
@@ -40,6 +33,13 @@ public class TinkerAppLike extends DefaultApplicationLike {
         GvApplicationCreate.setApplication(getApplication());
         SharePreferencesUtil.init(base);
         initAppRootFilePath();
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        BuglyInit.initBugly(getApplication());
+        GvApplicationCreate.getInstance().initInAppCreate();
     }
 
     public void registerActivityLifecycleCallback(Application.ActivityLifecycleCallbacks callbacks) {

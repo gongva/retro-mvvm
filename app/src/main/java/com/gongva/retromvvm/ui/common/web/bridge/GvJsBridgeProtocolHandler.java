@@ -12,10 +12,10 @@ import com.gongva.library.app.TinkerApplicationCreate;
 import com.gongva.library.app.base.ActivitySupport;
 import com.gongva.library.app.base.PermissionRequestListener;
 import com.gongva.library.app.ui.UI;
-import com.gongva.library.app.ui.web.H5JsBridgeParam;
-import com.gongva.library.app.ui.web.JsBridgeProtocolHandler;
-import com.gongva.library.app.ui.web.entity.H5CallBackAppInfo;
-import com.gongva.library.app.ui.web.entity.H5CallBackUserInfo;
+import com.gongva.library.app.ui.web.protocol.JsBridgeParam;
+import com.gongva.library.app.ui.web.protocol.JsBridgeProtocolHandler;
+import com.gongva.library.app.ui.web.entity.JsCallBackAppInfo;
+import com.gongva.library.app.ui.web.entity.JsCallBackUserInfo;
 import com.gongva.library.app.ui.web.entity.JsBase64;
 import com.gongva.library.app.ui.web.entity.JsMsg;
 import com.gongva.library.app.ui.web.entity.JsRoute;
@@ -29,6 +29,7 @@ import com.gongva.retromvvm.ui.common.web.entity.JsGetLocation;
 import com.gongva.retromvvm.ui.common.web.entity.JsQRScanDes;
 import com.hik.core.android.api.DeviceUtil;
 import com.hik.core.android.api.GsonUtil;
+import com.hik.core.android.api.LogCat;
 import com.hik.core.android.api.ScreenUtil;
 import com.hik.core.android.api.io.FileUtil;
 import com.hik.core.java.security.Base64;
@@ -52,29 +53,28 @@ public class GvJsBridgeProtocolHandler extends JsBridgeProtocolHandler {
      */
     public static final String ACTION_SCAN_QR_CODE = "scanQRCode";
 
-    private H5CallBackAppInfo mAppInfo;
+    private JsCallBackAppInfo mAppInfo;
 
     public GvJsBridgeProtocolHandler() {
         //与设备有关的不变的信息，只需构造一次
-        mAppInfo = new H5CallBackAppInfo();
+        mAppInfo = new JsCallBackAppInfo();
+        LogCat.i("1");
         mAppInfo.setVersion(GvConfig.getAppVersionName());
-        mAppInfo.setDeviceType(GvConfig.PHONE_TYPE_ANDROID);
+        LogCat.i("3");
         mAppInfo.setOsType(GvConfig.PHONE_TYPE_ANDROID);
+        LogCat.i("4");
         mAppInfo.setOsVersion(String.valueOf(Build.VERSION.SDK_INT));
-        mAppInfo.setDeviceModel(DeviceUtil.getDeviceModel());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ECLAIR && BluetoothAdapter.getDefaultAdapter() != null) {
-            mAppInfo.setDeviceName(BluetoothAdapter.getDefaultAdapter().getName());
-        } else {
-            mAppInfo.setDeviceName(Build.DEVICE);
-        }
-        mAppInfo.setDeviceCode(DeviceUtil.getDeviceCode(TinkerApplicationCreate.getApplication()));
+        LogCat.i("5");
         DisplayMetrics metrics = ScreenUtil.getDisplayMetrics(TinkerApplicationCreate.getApplication());
+        LogCat.i("13");
         mAppInfo.setResolution(metrics.heightPixels + "x" + metrics.widthPixels);
+        LogCat.i("14");
         mAppInfo.setDeviceBrand(Build.BRAND);
+        LogCat.i("15");
     }
 
     @Override
-    public void handleActionProtocol(Activity activity, H5JsBridgeParam param, JsBridgeProtocolCallBack callBack) {
+    public void handleActionProtocol(Activity activity, JsBridgeParam param, JsBridgeProtocolCallBack callBack) {
         if (param == null || TextUtils.isEmpty(param.getType())) {
             return;
         }
@@ -138,7 +138,7 @@ public class GvJsBridgeProtocolHandler extends JsBridgeProtocolHandler {
     @Override
     protected void handleUserInfo(JsBridgeProtocolCallBack callBack) {
         if (callBack != null) {
-            H5CallBackUserInfo userInfoParam = new H5CallBackUserInfo();
+            JsCallBackUserInfo userInfoParam = new JsCallBackUserInfo();
             userInfoParam.setToken(HeaderUtils.getHeaderToken());
             callBack.call(GsonUtil.jsonSerializer(userInfoParam));
         }

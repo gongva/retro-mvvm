@@ -1,0 +1,8 @@
+<resources>
+    <!--   启动页主题  -->
+    <style name="WelcomePageTheme" parent="AppTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/transparent_pressed</item><!-- 这里建议用启动页9.png -->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+</resources>
