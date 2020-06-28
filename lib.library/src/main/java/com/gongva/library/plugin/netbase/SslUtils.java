@@ -16,13 +16,13 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 
 /**
- * @author yslei
+ * @author
  * @date 2019/5/27
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class SslUtils {
 
-    private static final String TAG = "yslei";
+    private static final String TAG = "SslUtils";
     private static CustomerX509TrustManager sCustomerX509TrustManager;
 
     /**

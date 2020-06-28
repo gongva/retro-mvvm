@@ -8,9 +8,9 @@ import com.gongva.library.plugin.netbase.exception.ApiException;
 /**
  * 图片加载请求回调接口
  *
- * @author yslei
+ * @author
  * @date 2019/7/2
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public interface IImageRequestCallback {
     /**

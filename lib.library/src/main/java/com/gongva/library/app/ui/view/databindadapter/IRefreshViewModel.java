@@ -1,9 +1,9 @@
 package com.gongva.library.app.ui.view.databindadapter;
 
 /**
- * @author yslei
+ * @author GeneralErrorPage
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public interface IRefreshViewModel {
     // 用于在ViewModel刷新数据

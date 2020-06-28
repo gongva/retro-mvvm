@@ -12,9 +12,9 @@ import java.util.List;
 /**
  * 泛型类型Utils
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class GenericityTypeUtils {
 

@@ -14,9 +14,9 @@ import io.reactivex.internal.util.OpenHashSet;
 /**
  * 自定义disposable管理容器
  *
- * @author yslei
+ * @author
  * @date 2019/5/15
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class CustomerCompositeDisposable implements Disposable, DisposableContainer {
 

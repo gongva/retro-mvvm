@@ -11,9 +11,9 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * 用于网路请求线程切换帮助类
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class SchedulerProvider implements BaseSchedulerProvider {
 

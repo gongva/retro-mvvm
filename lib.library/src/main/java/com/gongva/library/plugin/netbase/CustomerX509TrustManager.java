@@ -18,9 +18,9 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * @author yslei
+ * @author
  * @date 2019/5/16
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class CustomerX509TrustManager implements X509TrustManager {
 

@@ -6,11 +6,8 @@ import android.databinding.ViewDataBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * @author yslei
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
  */
 public abstract class NormalTagRecycleViewAdapter<D>
         extends BaseTagRecycleViewAdapter implements INormalRecycleViewAdapter<D> {

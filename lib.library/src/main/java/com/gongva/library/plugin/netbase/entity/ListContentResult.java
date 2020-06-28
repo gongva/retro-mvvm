@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * 用于数据是列表[有分页]
  *
- * @author yslei
+ * @author
  * @data 2019/3/11
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class ListContentResult<T> extends ABaseResult<T> {
     private int totalCount;

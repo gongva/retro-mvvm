@@ -5,9 +5,9 @@ import com.gongva.library.plugin.netbase.exception.ApiException;
 /**
  * 用于统一控制Rx网络请求回调适配器
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 
 public class RequestObserverCallbackAdapter<T> extends RequestObserverCallback<T> {

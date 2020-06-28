@@ -16,9 +16,9 @@ import com.caverock.androidsvg.SVG;
  * ({@link Picture}).
  * https://github.com/bumptech/glide/tree/master/samples/svg/src/main/java/com/bumptech/glide/samples/svg
  *
- * @author yslei
+ * @author
  * @data 2019/4/30
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class SvgDrawableTranscoder implements ResourceTranscoder<SVG, PictureDrawable> {
     @Nullable

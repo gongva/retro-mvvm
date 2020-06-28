@@ -15,9 +15,9 @@ import retrofit2.Response;
 /**
  * LiveData转换适配器
  *
- * @author yslei
+ * @author
  * @date 2019/9/11
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class LiveDataCallAdapter<R> implements CallAdapter<R, Object> {
 

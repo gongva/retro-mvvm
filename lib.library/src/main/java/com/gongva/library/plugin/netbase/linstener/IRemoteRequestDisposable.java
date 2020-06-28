@@ -10,9 +10,9 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * 用于请求释放
  *
- * @author yslei
+ * @author
  * @data 2019/3/18
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public interface IRemoteRequestDisposable {
     /**

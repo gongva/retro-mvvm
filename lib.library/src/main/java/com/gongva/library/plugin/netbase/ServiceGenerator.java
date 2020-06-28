@@ -9,9 +9,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 /**
  * 网络请求服务生成器
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class ServiceGenerator {
 

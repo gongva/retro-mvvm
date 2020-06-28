@@ -9,9 +9,9 @@ import retrofit2.Converter;
 /**
  * 对外通用GSON相应request body转换器
  *
- * @author yslei
+ * @author
  * @data 2019/5/5
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public abstract class AGsonRequestBodyConverter<T> extends BaseGsonBodyConverter<T> implements Converter<T, RequestBody>, Cloneable {
     public void initParams(Gson gson, TypeAdapter<T> adapter) {

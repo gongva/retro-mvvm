@@ -34,7 +34,6 @@ public abstract class BaseTagRecycleViewAdapter extends RecyclerView.Adapter<Rec
 
     @Override
     public RecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //Log.d("yslei", "-------------onCreateViewHolder---------");
         if (hasHeaderView() && viewType == TYPE_HEADER) {
             return new RecycleViewHolder(mHeaderView);
         } else if (hasFooterView() && viewType == TYPE_FOOTER) {
@@ -164,7 +163,6 @@ public abstract class BaseTagRecycleViewAdapter extends RecyclerView.Adapter<Rec
     @SuppressWarnings("unchecked")
     @Override
     public void onBindViewHolder(RecycleViewHolder holder, int position) {
-        //Log.d("yslei", "-------------onBindViewHolder---------position:" + position);
         if (getItemViewType(position) == TYPE_HEADER ||
                 getItemViewType(position) == TYPE_FOOTER) return;
 

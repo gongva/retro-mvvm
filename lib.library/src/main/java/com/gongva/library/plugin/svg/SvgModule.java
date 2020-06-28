@@ -17,9 +17,9 @@ import java.io.InputStream;
  * https://muyangmin.github.io/glide-docs-cn/doc/generatedapi.html
  * https://github.com/bumptech/glide/tree/master/samples/svg/src/main/java/com/bumptech/glide/samples/svg
  *
- * @author yslei
+ * @author
  * @data 2019/4/30
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 @GlideModule
 public class SvgModule extends AppGlideModule {

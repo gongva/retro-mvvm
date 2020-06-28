@@ -5,9 +5,9 @@ import io.reactivex.Scheduler;
 /**
  * to do
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public interface BaseSchedulerProvider {
 

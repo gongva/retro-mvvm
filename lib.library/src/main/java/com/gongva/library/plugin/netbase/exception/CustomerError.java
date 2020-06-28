@@ -3,9 +3,9 @@ package com.gongva.library.plugin.netbase.exception;
 /**
  * 统一对外定制错误
  *
- * @author yslei
+ * @author
  * @data 2019/3/12
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class CustomerError {
     /**

@@ -9,9 +9,9 @@ import okhttp3.ResponseBody;
 /**
  * 默认网络相应body转换器
  *
- * @author yslei
+ * @author
  * @data 2019/5/5
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class MineGsonResponseBodyConverter<T> extends AGsonResponseBodyConverter<T> {
 

@@ -5,9 +5,9 @@ import com.gongva.library.plugin.eventbus.Event;
 /**
  * 应用状态
  *
- * @author yslei
+ * @author
  * @date 2019/4/1
- * @mail leiyongsheng@hikcreate.com
+ * @mail
  */
 public class LoginEvent extends Event {
 

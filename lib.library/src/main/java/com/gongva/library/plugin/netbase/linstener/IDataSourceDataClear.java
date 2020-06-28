@@ -3,9 +3,9 @@ package com.gongva.library.plugin.netbase.linstener;
 /**
  * 用于数据清理
  *
- * @author yslei
+ * @author
  * @data 2019/3/18
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public interface IDataSourceDataClear {
     /**

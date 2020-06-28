@@ -19,9 +19,9 @@ import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 import java.security.MessageDigest;
 
 /**
- * @author yslei
+ * @author
  * @data 2019/5/2
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class GlideRoundTransform implements Transformation<Bitmap> {
 

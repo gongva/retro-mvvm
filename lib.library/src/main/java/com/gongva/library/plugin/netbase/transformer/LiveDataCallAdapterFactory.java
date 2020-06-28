@@ -16,9 +16,9 @@ import retrofit2.Retrofit;
 /**
  * LiveData转换器
  *
- * @author yslei
+ * @author
  * @date 2019/9/11
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class LiveDataCallAdapterFactory extends Factory {
 

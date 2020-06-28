@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * 类型实体
  *
- * @author yslei
+ * @author
  * @data 2019/3/8
- * @email leiyongsheng@hikcreate.com
+ * @email
  */
 public class ClassTypeEntity implements IEmptyContent {
     private List<Type> classType;

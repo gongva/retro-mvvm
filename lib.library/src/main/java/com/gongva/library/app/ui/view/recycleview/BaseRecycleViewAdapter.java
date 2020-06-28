@@ -24,7 +24,6 @@ public abstract class BaseRecycleViewAdapter<B extends ViewDataBinding> extends 
 
     @Override
     public RecycleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //Log.d("yslei", "-------------onCreateViewHolder---------");
         B binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 setViewId(),
@@ -68,8 +67,6 @@ public abstract class BaseRecycleViewAdapter<B extends ViewDataBinding> extends 
     @SuppressWarnings("unchecked")
     @Override
     public void onBindViewHolder(RecycleViewHolder holder, int position) {
-        //Log.d("yslei", "-------------onBindViewHolder---------position:" + position);
-
         if (isInfinite()) {
             bindViewHolderData((B) holder.getBinding(), position % getDataCount());
         } else {
