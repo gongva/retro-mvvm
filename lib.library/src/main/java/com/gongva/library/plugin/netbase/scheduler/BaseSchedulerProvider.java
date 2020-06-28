@@ -3,11 +3,10 @@ package com.gongva.library.plugin.netbase.scheduler;
 import io.reactivex.Scheduler;
 
 /**
- * to do
  *
- * @author
+ * @author gongwei
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public interface BaseSchedulerProvider {
 

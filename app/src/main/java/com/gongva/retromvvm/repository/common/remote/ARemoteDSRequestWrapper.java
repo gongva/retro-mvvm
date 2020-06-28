@@ -35,9 +35,9 @@ import okhttp3.ResponseBody;
  * 用于取消RxJava2的订阅
  * https://blog.csdn.net/j550341130/article/details/80540759
  *
- * @author
+ * @author gongwei
  * @data 2019/3/18
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ARemoteDSRequestWrapper implements IDataSourceDataClear, IRemoteRequestDisposable {
 

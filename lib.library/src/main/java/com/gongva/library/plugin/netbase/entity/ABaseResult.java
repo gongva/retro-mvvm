@@ -6,9 +6,9 @@ import java.util.Map;
 /**
  * 相应结果接口
  *
- * @author
+ * @author gongwei
  * @date 2019/11/15
- * @email
+ * @email shmily__vivi@163.com
  */
 public abstract class ABaseResult<T> implements IEmptyContent {
 

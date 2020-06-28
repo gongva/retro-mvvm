@@ -73,7 +73,7 @@ public class ImageEnlargeScrollView extends StretchScrollView {
                 float cVal = (Float) animation.getAnimatedValue();
                 lp.width = (int) (wNew - (wNew - wOld) * cVal);
                 lp.height = (int) (hNew - (hNew - hOld) * cVal);
-                //add by xiongwm 设置margin量即向右偏移值
+                //设置margin量即向右偏移值
                 lp.setMargins((int) ((1 - cVal) * margin), 0, 0, 0);
                 imageView.setLayoutParams(lp);
             }
@@ -122,7 +122,7 @@ public class ImageEnlargeScrollView extends StretchScrollView {
                         lp.width = metric.widthPixels + distance;
                         lp.height = (int) ((metric.widthPixels + distance) / ratio);
                         distanceM = distance / 2;
-                        //add by xiongwm 设置margin量即向左偏移值
+                        //设置margin量即向左偏移值
                         lp.setMargins((int) -distanceM, 0, 0, 0);
                         imageView.setLayoutParams(lp);
                         //modify by gongwei 2019.1.22：此Scroll集成了回弹效果

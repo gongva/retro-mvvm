@@ -11,7 +11,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
  *
  * @author
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ServiceGenerator {
 

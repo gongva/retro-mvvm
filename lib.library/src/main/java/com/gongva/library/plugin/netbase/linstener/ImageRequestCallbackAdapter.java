@@ -6,9 +6,9 @@ import com.gongva.library.plugin.netbase.entity.ResponseResult;
 import com.gongva.library.plugin.netbase.exception.ApiException;
 
 /**
- * @author
+ * @author gongwei
  * @date 2019/7/2
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ImageRequestCallbackAdapter implements IImageRequestCallback {
 

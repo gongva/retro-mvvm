@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  *
  * @author gongwei
  * @date 2019/4/13
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class ARouterDispatcher {
     //记录最近跳转的地址与其时间戳

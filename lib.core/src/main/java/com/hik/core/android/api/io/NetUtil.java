@@ -14,7 +14,7 @@ import android.text.format.Formatter;
  *
  * @author gongwei
  * @time 2019/11/26
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 @SuppressLint("WrongConstant")
 public class NetUtil {

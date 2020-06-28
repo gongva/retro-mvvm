@@ -5,7 +5,7 @@ package com.gongva.library.app.ui.login;
  *
  * @author gongwei
  * @date 2019/4/3
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public abstract class LoginManager {
 

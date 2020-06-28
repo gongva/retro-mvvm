@@ -16,9 +16,9 @@ import com.bumptech.glide.request.target.Target;
  * <p>
  * https://github.com/bumptech/glide/tree/master/samples/svg/src/main/java/com/bumptech/glide/samples/svg
  *
- * @author
+ * @author gongwei
  * @data 2019/4/30
- * @email
+ * @email shmily__vivi@163.com
  */
 public class SvgSoftwareLayerSetter implements RequestListener<PictureDrawable> {
     @Override

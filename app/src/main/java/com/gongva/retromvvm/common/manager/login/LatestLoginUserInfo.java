@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author gongwei
  * @date 2019/4/25
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class LatestLoginUserInfo implements Serializable {
     private String phone;//手机号

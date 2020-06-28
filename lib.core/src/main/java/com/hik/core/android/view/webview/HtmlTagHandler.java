@@ -19,9 +19,9 @@ import java.util.HashMap;
 /**
  * html格式处理
  *
- * @author wangtao55
+ * @author gongwei
  * @date 2019/9/23
- * @mail wangtao55@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class HtmlTagHandler implements Html.TagHandler {
 

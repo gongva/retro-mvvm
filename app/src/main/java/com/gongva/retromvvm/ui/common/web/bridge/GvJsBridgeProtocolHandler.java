@@ -38,7 +38,7 @@ import com.hik.core.java.security.Base64;
  *
  * @author gongwei
  * @date 2019/4/18
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class GvJsBridgeProtocolHandler extends JsBridgeProtocolHandler {
     /**

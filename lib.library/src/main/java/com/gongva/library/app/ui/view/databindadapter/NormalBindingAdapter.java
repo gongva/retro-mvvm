@@ -11,9 +11,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * @author
+ * @author gongwei
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public class NormalBindingAdapter {
     @BindingAdapter({"imageUrl", "error"})

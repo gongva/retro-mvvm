@@ -5,7 +5,7 @@ package com.gongva.library.app.ui.web.entity;
  *
  * @author gongwei
  * @time 2019/10/14
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class JsShareWebImg {
 

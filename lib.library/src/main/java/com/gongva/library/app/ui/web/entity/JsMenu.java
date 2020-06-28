@@ -5,7 +5,7 @@ package com.gongva.library.app.ui.web.entity;
  *
  * @author gongwei
  * @date 2019/10/29
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class JsMenu {
     private String menu;//菜单文字(不超过4个字)

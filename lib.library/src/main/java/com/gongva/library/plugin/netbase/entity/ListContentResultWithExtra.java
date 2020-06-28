@@ -3,9 +3,9 @@ package com.gongva.library.plugin.netbase.entity;
 /**
  * 带有额外数据的，分页接口
  *
- * @author
+ * @author gongwei
  * @data 2019/3/11
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ListContentResultWithExtra<T, D> extends ListContentResult<T> {
     private D extra;

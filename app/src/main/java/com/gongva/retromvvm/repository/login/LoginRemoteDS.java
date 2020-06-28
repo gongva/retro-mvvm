@@ -16,7 +16,7 @@ import com.google.gson.JsonObject;
  *
  * @author gongwei
  * @date 2019/6/25
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class LoginRemoteDS extends ARemoteDSRequestWrapper {
     private static volatile LoginRemoteDS INSTANCE;

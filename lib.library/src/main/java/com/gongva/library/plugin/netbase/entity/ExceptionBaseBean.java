@@ -2,9 +2,9 @@ package com.gongva.library.plugin.netbase.entity;
 
 /**
  * 业务异常基础bean
- * @author
+ * @author gongwei
  * @date 2020/1/14
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ExceptionBaseBean {
     private int code;

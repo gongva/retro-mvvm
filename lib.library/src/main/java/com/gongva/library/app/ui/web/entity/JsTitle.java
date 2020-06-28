@@ -5,7 +5,7 @@ package com.gongva.library.app.ui.web.entity;
  *
  * @author gongwei
  * @date 2019/4/26
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class JsTitle {
     private String title;

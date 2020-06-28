@@ -14,7 +14,7 @@ import android.widget.ScrollView;
 /**
  * 个人信息下拉放大scrollview
  *
- * @author xiongweimin
+ * @author gongwei
  * @time 2019/03/21
  */
 public class PersonalScrollView extends ScrollView {

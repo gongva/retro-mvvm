@@ -5,7 +5,7 @@ package com.gongva.library.app.ui.web.entity;
  *
  * @author gongwei
  * @time 2020/03/11
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class JsUrl {
     private String url;

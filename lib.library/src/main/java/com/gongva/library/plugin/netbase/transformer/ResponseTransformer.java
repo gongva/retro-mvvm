@@ -12,11 +12,10 @@ import io.reactivex.functions.Function;
 import okhttp3.ResponseBody;
 
 /**
- * to do
  *
- * @author
+ * @author gongwei
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ResponseTransformer {
 

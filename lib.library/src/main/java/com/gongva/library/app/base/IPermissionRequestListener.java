@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author gongwei
  * @time 2020/04/28
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public interface IPermissionRequestListener {
     void onGranted();

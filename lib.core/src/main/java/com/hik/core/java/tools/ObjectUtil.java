@@ -12,7 +12,7 @@ import io.reactivex.schedulers.Schedulers;
  *
  * @author gongwei
  * @time 2019/10/12
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class ObjectUtil {
 

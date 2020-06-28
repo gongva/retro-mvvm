@@ -13,9 +13,9 @@ import java.util.List;
 /**
  * app初始化基础类
  *
- * @author wangtao
+ * @author gongwei
  * @date 2019/07/04
- * @mail wangtao55@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public abstract class TinkerApplicationCreate {
 

@@ -8,7 +8,7 @@ import android.util.AttributeSet;
  *
  * @author gongwei
  * @date 2019/5/11
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class ForbidPasteEditText extends ClearEditText {
     public ForbidPasteEditText(Context context) {

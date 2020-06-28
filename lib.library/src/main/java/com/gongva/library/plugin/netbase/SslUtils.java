@@ -18,7 +18,7 @@ import javax.net.ssl.TrustManager;
 /**
  * @author
  * @date 2019/5/27
- * @email
+ * @email shmily__vivi@163.com
  */
 public class SslUtils {
 

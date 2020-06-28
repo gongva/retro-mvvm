@@ -5,7 +5,7 @@ package com.gongva.retromvvm.ui.common.web.entity;
  *
  * @author gongwei
  * @time 2019/12/20
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class JsQRScanDes {
     private String introduction;//二维码扫描文案说明

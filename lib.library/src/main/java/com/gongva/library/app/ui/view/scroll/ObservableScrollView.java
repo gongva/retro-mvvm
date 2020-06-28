@@ -9,7 +9,7 @@ import android.util.AttributeSet;
  *
  * @author gongwei
  * @date 2019/7/31
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class ObservableScrollView extends NestedScrollView {
 

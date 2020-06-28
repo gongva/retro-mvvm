@@ -12,9 +12,9 @@ import okio.Buffer;
 /**
  * 默认网络请求body转换器
  *
- * @author
+ * @author gongwei
  * @data 2019/5/5
- * @email
+ * @email shmily__vivi@163.com
  */
 public class MineGsonRequestBodyConverter<T> extends AGsonRequestBodyConverter<T> {
 

@@ -4,9 +4,9 @@ import android.databinding.BindingConversion;
 import android.graphics.drawable.ColorDrawable;
 
 /**
- * @author
+ * @author gongwei
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public class NormalBindingConvert {
 

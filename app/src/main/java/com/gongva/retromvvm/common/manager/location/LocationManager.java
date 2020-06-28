@@ -25,9 +25,9 @@ import java.util.List;
 /**
  * 定位管理器
  *
- * @author gongwei
+ * @ gongwei
  * @time 2019/12/20
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class LocationManager {
 

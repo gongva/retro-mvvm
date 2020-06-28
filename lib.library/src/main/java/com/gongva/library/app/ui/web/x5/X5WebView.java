@@ -56,7 +56,7 @@ import java.util.Map;
  *
  * @author gongwei
  * @time 2020/03/24
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public abstract class X5WebView extends WebView {
 

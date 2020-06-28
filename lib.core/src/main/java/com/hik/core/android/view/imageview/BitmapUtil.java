@@ -28,7 +28,7 @@ import java.net.URL;
  *
  * @author gongwei
  * @time 2019/10/29
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class BitmapUtil {
     private static final Rect sOldBounds = new Rect();

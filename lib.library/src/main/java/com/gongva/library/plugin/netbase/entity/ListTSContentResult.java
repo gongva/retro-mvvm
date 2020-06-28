@@ -5,9 +5,9 @@ import java.util.List;
 /**
  * 时间搓数据分页加载
  *
- * @author
+ * @author gongwei
  * @data 2019/3/11
- * @email
+ * @email shmily__vivi@163.com
  */
 public class ListTSContentResult<T> extends ABaseResult<T> {
     private long timestamp;

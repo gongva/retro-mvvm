@@ -10,11 +10,10 @@ import java.util.regex.Pattern;
  * 限制输入
  * 仅支持中文 数字 英文
  *
- * @author xiongweimin
+ * @author gongwei
  * @time 2019/11/22
  */
 public class LimitInputFilter implements InputFilter {
-
 
     @Override
     public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {

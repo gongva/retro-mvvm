@@ -11,9 +11,9 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * 用于统一控制Rx网络请求回调
  *
- * @author
+ * @author gongwei
  * @data 2019/3/8
- * @email
+ * @email shmily__vivi@163.com
  */
 public abstract class RequestObserverCallback<T> extends DisposableObserver<T> {
 

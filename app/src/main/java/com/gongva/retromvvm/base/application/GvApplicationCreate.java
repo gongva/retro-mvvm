@@ -40,9 +40,9 @@ import okhttp3.OkHttpClient;
 /**
  * 将程序所有初始化操作全部移动到这里
  *
- * @author wangtao
+ * @author gongwei
  * @date 2019/07/04
- * @mail wangtao55@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class GvApplicationCreate extends TinkerApplicationCreate {
 

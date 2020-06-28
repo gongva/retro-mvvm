@@ -11,7 +11,7 @@ import java.util.concurrent.Executors;
  *
  * @author gongwei
  * @time 2020/06/23
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class AppExecutors {
     private Executor taskThread;

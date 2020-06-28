@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author gongwei
  * @time 2019/12/20
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class H5CallBackLocation implements Serializable {
     private String lng;//"经度",

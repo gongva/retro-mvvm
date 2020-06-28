@@ -7,7 +7,7 @@ import java.util.List;
  *
  * @author gongwei
  * @date 2019/3/29
- * @mail gongwei5@hikcreate.com
+ * @mail shmily__vivi@163.com
  */
 public class ListEntity<T> extends ABaseResult {
     private List<T> list;
