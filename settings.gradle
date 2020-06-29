@@ -1,2 +1,2 @@
 rootProject.name='RetroMvvm'
-include ':app'/*, ':lib.security'*/, 'lib.core', 'lib.library'
+include ':app'/*, ':lib.security'*/, 'lib.core', 'lib.library', 'buildsrc'

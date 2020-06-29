@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply from: 'tinker-support.gradle'
+apply plugin: 'com.gongva.plugin'//todo company's plug name
 
 def verCode = 1
 def verName = "1.0"
@@ -26,19 +27,43 @@ android {
         }
     }
 
+    // todo company's keystore
+    signingConfigs {
+        release {
+            storeFile file("keystore.jks")
+            storePassword "123abc"
+            keyAlias "gongva"
+            keyPassword "123abc"
+        }
+        debug {
+            storeFile file("keystore.jks")
+            storePassword "123abc"
+            keyAlias "gongva"
+            keyPassword "123abc"
+        }
+    }
+
     buildTypes {
         release {
+            zipAlignEnabled true
             debuggable false
             jniDebuggable false
             minifyEnabled false
+            shrinkResources false
+            renderscriptDebuggable false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("boolean", "SHOW_LOG", "false")
             buildConfigField("boolean", "SERVER_SWITCH_ENABLE", "false")
         }
         debug {
+            zipAlignEnabled true
             debuggable true
             jniDebuggable true
             minifyEnabled false
+            shrinkResources false
+            renderscriptDebuggable true
+            signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("boolean", "SHOW_LOG", "true")
             buildConfigField("boolean", "SERVER_SWITCH_ENABLE", "true")
@@ -98,4 +123,11 @@ dependencies {
     implementation "com.tencent.bugly:nativecrashreport:$rootProject.bugly_native_crashreport"
     //walle
     implementation "com.meituan.android.walle:library:$rootProject.meituanWalle"
+}
+
+//todo for release build environment of local PC
+channel {
+    path360 "F:\\Develop\\项目文档\\360jiagubao_windows_64\\jiagu"
+    sdkBuildToolPath "F:\\Develop\\sdk\\build-tools\\28.0.3"
+    appName "app"
 }

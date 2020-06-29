@@ -27,11 +27,25 @@ data and action echo
 4.FileUtil
 APP_ROOT_FILE
 
+lib.buildsrc's to do:
+1.keystore.jks
+2.changeParam.py
+keystore setting
+3.com.gongva.plugin.properties
+package name
+4.ChannelPlugin
+
+
 project/s to do:
-1.build.gradle
+1.project's build.gradle
 maven:repository url
-2.String.xml
+2.app's build.gradle
+keystore setting
+plugin setting
+channel setting
+3.String.xml
 link_scheme and link_scheme_host
+4.keystore.jks
 
 Other todo:
 1.GvContext
@@ -42,3 +56,7 @@ Other todo:
 6.GvApplicationCreate
 7.GvJsBridgeProtocolHandler
 8.provider_paths.xml
+9.styles.xml
+
+other dependencies：
+1.python environment
