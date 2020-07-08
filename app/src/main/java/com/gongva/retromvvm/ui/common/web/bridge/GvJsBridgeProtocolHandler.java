@@ -58,19 +58,12 @@ public class GvJsBridgeProtocolHandler extends JsBridgeProtocolHandler {
     public GvJsBridgeProtocolHandler() {
         //与设备有关的不变的信息，只需构造一次
         mAppInfo = new JsCallBackAppInfo();
-        LogCat.i("1");
         mAppInfo.setVersion(GvConfig.getAppVersionName());
-        LogCat.i("3");
         mAppInfo.setOsType(GvConfig.PHONE_TYPE_ANDROID);
-        LogCat.i("4");
         mAppInfo.setOsVersion(String.valueOf(Build.VERSION.SDK_INT));
-        LogCat.i("5");
         DisplayMetrics metrics = ScreenUtil.getDisplayMetrics(TinkerApplicationCreate.getApplication());
-        LogCat.i("13");
         mAppInfo.setResolution(metrics.heightPixels + "x" + metrics.widthPixels);
-        LogCat.i("14");
         mAppInfo.setDeviceBrand(Build.BRAND);
-        LogCat.i("15");
     }
 
     @Override
