@@ -23,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import com.gongva.library.app.base.PermissionRequestListener;
 import com.gongva.library.app.ui.web.protocol.JsBridgeParam;
 import com.gongva.library.app.ui.web.protocol.JsBridgeProtocolHandler;
 import com.hik.core.android.api.GsonUtil;
@@ -547,30 +548,19 @@ public abstract class X5WebView extends WebView {
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-            //电话拦截
+            //拨打电话拦截
             if (parseSchemeTel(url)) {
                 startCallTask(url);
                 return true;
             }
-            //支付宝网页支付拦截
-            if (parseScheme(url)) {
-                Activity activityHost = ViewUtil.getActivityFromView(X5WebView.this);
-                //Modify by Gv. 2019.11.08  启动支付宝的的方式改为了官方最新推荐方式
-                try {
-                    activityHost.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(url)));
-                } catch (Exception e) {
-                    UI.showConfirmDialog(activityHost, "未检测到支付宝客户端，请安装后重试。", "知道了", null);
-                }
-                /*try {
-                    Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-                    intent.addCategory("android.intent.category.BROWSABLE");
-                    intent.setComponent(null);
-                    getContext().startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
-                //Modify by Gv. end
+            //支付宝支付拦截
+            if (parseSchemeAliPay(url)) {
+                startCustomTask(url, "未检测到支付宝客户端");
+                return true;
+            }
+            //微信支付拦截
+            if (parseSchemeWx(url)) {
+                startCustomTask(url, "未检测到微信客户端");
                 return true;
             }
 
@@ -579,27 +569,10 @@ public abstract class X5WebView extends WebView {
                 handled = _clientCallBack.shouldOverrideUrlLoading(view, url);
             }
             if (!handled) {
-                String replacedUrl = url.replaceAll("%(?![0-9a-fA-F]{2})", "%25");
+                String replacedUrl = url.replaceAll("%(?![0-9a-fA-F]{2})", "%25");//把url中单独的%字符换成%25
                 handled = super.shouldOverrideUrlLoading(view, replacedUrl);
             }
             return handled;
-        }
-
-        /**
-         * 支付宝网页支付是先后调用如下网页
-         * 1.https://mobilecodec.alipay.com/client_download.htm?qrcode=bax05351pgjhc4yegd2y2084
-         * 2.https://ds.alipay.com/from=mobilecodec&scheme=alipayqr%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fqr.alipay.com%252Fbax05351pgjhc4yegd2y2084%253F_s%253Dweb-other
-         * 之后返回一个意图，也是用这个意图来打开支付宝app
-         * intent://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2Fbax05351pgjhc4yegd2y2084%3F_s%3Dwebother&_t=1474448799004#Intent;scheme=alipayqr;package=com.eg.android.AlipayGphone;end
-         * <p>
-         * 基于以上而做的拦截
-         *
-         * @param url
-         * @return
-         */
-        public boolean parseScheme(String url) {
-            String urlTemp = url.toLowerCase();
-            return urlTemp.startsWith("alipays:") || urlTemp.startsWith("alipay") || urlTemp.contains("platformapi/startapp");
         }
 
         /**
@@ -617,6 +590,43 @@ public abstract class X5WebView extends WebView {
         }
 
         /**
+         * 校验是否为支付宝的Uri
+         * 兼容旧版支付宝网页支付
+         *
+         * 支付宝网页支付是先后调用如下网页
+         * 1.https://mobilecodec.alipay.com/client_download.htm?qrcode=bax05351pgjhc4yegd2y2084
+         * 2.https://ds.alipay.com/from=mobilecodec&scheme=alipayqr%3A%2F%2Fplatformapi%2Fstartapp%3FsaId%3D10000007%26clientVersion%3D3.7.0.0718%26qrcode%3Dhttps%253A%252F%252Fqr.alipay.com%252Fbax05351pgjhc4yegd2y2084%253F_s%253Dweb-other
+         * 之后返回一个意图，也是用这个意图来打开支付宝app
+         * intent://platformapi/startapp?saId=10000007&clientVersion=3.7.0.0718&qrcode=https%3A%2F%2Fqr.alipay.com%2Fbax05351pgjhc4yegd2y2084%3F_s%3Dwebother&_t=1474448799004#Intent;scheme=alipayqr;package=com.eg.android.AlipayGphone;end
+         * <p>
+         * 基于以上而做的拦截
+         *
+         * @param url
+         * @return
+         */
+        public boolean parseSchemeAliPay(String url) {
+            if (TextUtils.isEmpty(url)) {
+                return false;
+            }
+            String urlTemp = url.toLowerCase();
+            return urlTemp.startsWith("alipays://") || urlTemp.contains("platformapi/startapp");
+        }
+
+        /**
+         * 校验是否为微信的Uri
+         *
+         * @param url
+         * @return
+         */
+        public boolean parseSchemeWx(String url) {
+            if (TextUtils.isEmpty(url)) {
+                return false;
+            } else {
+                return url.startsWith("weixin://");
+            }
+        }
+
+        /**
          * 唤起拨打电话应用
          *
          * @param url
@@ -626,12 +636,28 @@ public abstract class X5WebView extends WebView {
             if (activityHost == null) {
                 return;
             }
-            Intent intentCall = new Intent(Intent.ACTION_CALL, Uri.parse(url));
-            intentCall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if (ActivityCompat.checkSelfPermission(activityHost, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(activityHost, new String[]{Manifest.permission.CALL_PHONE}, PERMISSIONS_REQUEST_PHONE);
-            } else {
-                activityHost.startActivity(intentCall);
+            ActivitySupport.requestRunPermission(activityHost, new String[]{Manifest.permission.CALL_PHONE}, new PermissionRequestListener() {
+                @Override
+                public void onGranted() {
+                    Intent intentCall = new Intent(Intent.ACTION_CALL, Uri.parse(url));
+                    intentCall.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    activityHost.startActivity(intentCall);
+                }
+            });
+        }
+
+        /**
+         * 唤起第三方App
+         *
+         * @param url
+         * @param errorMsg 唤起失败时的文案
+         */
+        private void startCustomTask(String url, String errorMsg) {
+            Activity activityHost = ViewUtil.getActivityFromView(X5WebView.this);
+            try {
+                activityHost.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            } catch (Exception e) {
+                UI.showConfirmDialog(activityHost, errorMsg, "知道了", null);
             }
         }
     }
