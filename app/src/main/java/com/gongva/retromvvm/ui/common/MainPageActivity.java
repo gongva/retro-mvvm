@@ -17,6 +17,7 @@ import com.gongva.retromvvm.databinding.ActivityMainPageBinding;
 import com.gongva.retromvvm.library.plugs.arouter.ARouterPath;
 import com.gongva.retromvvm.ui.common.web.AppH5WebActivity;
 import com.gongva.retromvvm.ui.common.web.AppX5WebActivity;
+import com.gongva.retromvvm.ui.login.LoginActivity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -77,6 +78,9 @@ public class MainPageActivity extends BaseActivity<ActivityMainPageBinding> {
                     case R.id.btn_x5_test:
                         EditText editX5 = findViewById(R.id.edt_x5_test);
                         AppX5WebActivity.start(MainPageActivity.this, editX5.getText().toString());
+                        break;
+                    case R.id.btn_login:
+                        LoginActivity.start();
                         break;
                 }
             }

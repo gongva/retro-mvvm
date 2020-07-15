@@ -31,15 +31,15 @@ android {
     signingConfigs {
         release {
             storeFile file("keystore.jks")
-            storePassword "123abc"
+            storePassword "gongvagroup"
             keyAlias "gongva"
-            keyPassword "123abc"
+            keyPassword "gongvagroup"
         }
         debug {
             storeFile file("keystore.jks")
-            storePassword "123abc"
+            storePassword "gongvagroup"
             keyAlias "gongva"
-            keyPassword "123abc"
+            keyPassword "gongvagroup"
         }
     }
 
@@ -106,9 +106,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    //library module
+    // Android Architecture Components
+    implementation "android.arch.lifecycle:extensions:$rootProject.archLifecycleVersion"
+    // library module
     implementation project(path: ':lib.library')
-    //BackgroundLibrary，解放selector和shape
+    // BackgroundLibrary，解放selector和shape
     implementation "com.noober.background:core:$rootProject.backgroundLibrary"
     // ARouter
     implementation "com.alibaba:arouter-api:$rootProject.aRouterApi",
@@ -116,12 +118,12 @@ dependencies {
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.aRouterCompiler"
     // SmartRefreshLayout 刷新控件
     implementation "com.scwang.smartrefresh:SmartRefreshLayout:$rootProject.smartRefreshLayout"
-    //bugly tinker相关
+    // bugly tinker相关
     //implementation "com.android.support:multidex:$rootProject.multidexVersion" //在core组件中已引用
     implementation "com.tencent.tinker:tinker-android-lib:$rootProject.tinkerVersion"
     implementation "com.tencent.bugly:crashreport_upgrade:$rootProject.bugly_crashreport"
     implementation "com.tencent.bugly:nativecrashreport:$rootProject.bugly_native_crashreport"
-    //walle
+    // walle
     implementation "com.meituan.android.walle:library:$rootProject.meituanWalle"
 }
 

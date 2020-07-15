@@ -46,6 +46,13 @@
                 android:text="X5测试"
                 android:textAllCaps="false" />
 
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="@{clickListener}"
+                android:text="请先登录" />
         </LinearLayout>
     </ScrollView>
 </layout>

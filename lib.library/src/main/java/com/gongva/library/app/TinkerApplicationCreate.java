@@ -37,17 +37,14 @@ public abstract class TinkerApplicationCreate {
     }
 
     public static void setApplication(Application mApplication) {
-        LogCat.i("Gv: set application.");
         TinkerApplicationCreate.mApplication = mApplication;
     }
 
     public void initInAppCreate() {
         if (mApplication == null) {
-            LogCat.i("initInAppCreate but application is null");
             throw new RuntimeException("The application is null. Plz call setApplication() in to set the application first. ");
         }
         try {
-            LogCat.i("initInAppCreate");
             if (ProcessUtil.isMainProcess(mApplication.getApplicationContext())) {
                 initAppStatus();
                 initX5();

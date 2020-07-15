@@ -75,3 +75,6 @@ uploadArchives {
         }
     }
 }
+repositories {
+    mavenCentral()
+}

@@ -34,8 +34,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"
         android:gravity="center_horizontal"
-        android:text="正在提交"
-        android:textColor="#fff"
-        android:visibility="gone" />
+        android:text="正在提交..."
+        android:textColor="#666" />
 
 </LinearLayout>

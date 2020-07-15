@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 public class UserInfo implements Serializable {
     public String id;
-    public String name;//**彪
-    public String avatar;//mock
-    public String phone;//155****3868
+    public String name;
+    public String avatar;
+    public String phone;
 
     public String getId() {
         return id;
@@ -41,5 +41,24 @@ public class UserInfo implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
+
+    public static UserInfo createTemp() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setId("id123");
+        userInfo.setName("nameABC");
+        userInfo.setAvatar(null);
+        userInfo.setPhone("13800001111");
+        return userInfo;
     }
 }

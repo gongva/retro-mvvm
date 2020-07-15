@@ -18,5 +18,5 @@ password360 = "360password"
 #todo company's keystore
 keystoreName = "keystore.jks"
 keyAlias = "gongva"
-keystorePassword = "123abc"
-keyPassword = "123abc"
+keystorePassword = "gongvagroup"
+keyPassword = "gongvagroup"

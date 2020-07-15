@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.gongva.retromvvm.ui.login.LoginViewModel" />
+
+        <import type="android.text.TextUtils" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <EditText
+            android:id="@+id/edt_username"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入用户名"
+            android:text="@={loginViewModel.loginOb.username}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:text="@={loginViewModel.loginOb.password}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:enabled="@{!TextUtils.isEmpty(loginViewModel.loginOb.username) &amp;&amp; !TextUtils.isEmpty(loginViewModel.loginOb.password)}"
+            android:onClick="@{()->loginViewModel.performLogin()}"
+            android:text="登录"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_password" />
+    </android.support.constraint.ConstraintLayout>
+</layout>
